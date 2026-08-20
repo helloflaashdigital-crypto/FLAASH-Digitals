@@ -1,0 +1,2 @@
+import mongoose from 'mongoose';import {contentOptions,imageSchema,status,ordered} from './shared.js';
+const s=new mongoose.Schema({clientName:{type:String,required:true,trim:true,maxlength:100},company:String,designation:String,photo:imageSchema,companyLogo:imageSchema,review:{type:String,required:true,maxlength:2000},rating:{type:Number,min:1,max:5},project:{type:mongoose.Schema.Types.ObjectId,ref:'Project'},isFeatured:{type:Boolean,default:false,index:true},status,displayOrder:ordered},contentOptions);export default mongoose.model('Testimonial',s);

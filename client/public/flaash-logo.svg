@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700" role="img" aria-labelledby="title desc">
+  <title id="title">FLAASH Digital</title>
+  <desc id="desc">FLAASH Digital black wordmark on a yellow circle with a coral lightning bolt.</desc>
+  <circle cx="350" cy="350" r="330" fill="#ffc20a"/>
+  <text x="350" y="364" fill="#080808" font-family="Arial Black,Arial,sans-serif" font-size="126" font-weight="900" letter-spacing="-11" text-anchor="middle">FLAASH</text>
+  <path d="M363 184 313 315h46l-48 174 118-192h-54l50-113Z" fill="#f4512a"/>
+  <path d="M153 457h54M493 457h54" stroke="#080808" stroke-width="4"/>
+  <text x="350" y="471" fill="#080808" font-family="Arial, sans-serif" font-size="29" letter-spacing="15" text-anchor="middle">DIGITAL</text>
+</svg>

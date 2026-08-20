@@ -1,0 +1,2 @@
+import mongoose from 'mongoose';import {contentOptions} from './shared.js';
+const s=new mongoose.Schema({companyName:{type:String,default:'FLAASH Digital'},tagline:{type:String,default:'Digital Solutions | Creative Impact'},description:String,phone:String,whatsapp:String,email:String,address:String,googleMapsUrl:String,instagram:String,facebook:String,linkedin:String,youtube:String,officeHours:String,defaultSeoTitle:String,defaultSeoDescription:String,footerText:String,contactCtaText:String},contentOptions);export default mongoose.model('SiteSettings',s);

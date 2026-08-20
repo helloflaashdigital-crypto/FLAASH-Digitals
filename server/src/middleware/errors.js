@@ -1,0 +1,2 @@
+export function notFound(req,res,next){const err=new Error(`Route not found: ${req.originalUrl}`);err.statusCode=404;next(err)}
+export function errorHandler(err,req,res,next){const status=err.statusCode||500;const message=status===500&&process.env.NODE_ENV==='production'?'Something went wrong':err.message||'Something went wrong';if(process.env.NODE_ENV!=='test')console.error(err.message);res.status(status).json({success:false,message, ...(process.env.NODE_ENV==='development'&&status===500?{stack:err.stack}:{})})}

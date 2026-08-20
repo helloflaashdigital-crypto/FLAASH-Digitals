@@ -1,0 +1,2 @@
+export function Brand({ dark = false, wordmark = false }) { return <span className={`brand ${dark ? 'brand--dark' : ''}${wordmark ? ' brand--lockup' : ''}`}><img src="/flaash-logo.svg" alt="FLAASH Digital"/>{wordmark && <span className="brand__copy" aria-hidden="true"><b>FLAASH</b><small>DIGITAL</small></span>}</span>; }
+export function Beam() { return <span className="beam" aria-hidden="true" />; }

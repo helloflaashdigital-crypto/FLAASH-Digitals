@@ -1,0 +1,25 @@
+{
+  "name": "flaash-digital-server",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": { "dev": "nodemon src/server.js", "start": "node src/server.js" },
+  "dependencies": {
+    "bcryptjs": "latest",
+    "cloudinary": "latest",
+    "cookie-parser": "latest",
+    "cors": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "express-rate-limit": "latest",
+    "express-validator": "latest",
+    "@google/genai": "latest",
+    "helmet": "latest",
+    "jsonwebtoken": "latest",
+    "mongoose": "latest",
+    "morgan": "latest",
+    "multer": "latest",
+    "streamifier": "latest"
+  },
+  "devDependencies": { "nodemon": "latest" }
+}

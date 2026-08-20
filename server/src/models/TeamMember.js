@@ -1,0 +1,2 @@
+import mongoose from 'mongoose';import {contentOptions,imageSchema,status,ordered} from './shared.js';
+const s=new mongoose.Schema({name:{type:String,required:true,trim:true,maxlength:100},designation:{type:String,trim:true,maxlength:120},photo:imageSchema,bio:{type:String,maxlength:1500},linkedin:String,instagram:String,status,displayOrder:ordered},contentOptions);export default mongoose.model('TeamMember',s);
