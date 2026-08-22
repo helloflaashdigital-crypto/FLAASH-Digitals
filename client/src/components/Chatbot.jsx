@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { Bot, LoaderCircle, MessageCircle, Send, Sparkles, X } from 'lucide-react';
+import { Bot, BotMessageSquare, LoaderCircle, Send, Sparkles, X } from 'lucide-react';
 import { api } from '../services/api';
 
 const greeting = { role: 'assistant', content: 'Hi — I’m the FLAASH assistant. Ask me about our services, work, results, or starting a project.' };
@@ -36,6 +36,6 @@ export default function Chatbot() {
       <form onSubmit={event => { event.preventDefault(); send(draft); }}><label className="sr-only" htmlFor="flaash-chat-message">Ask a question</label><textarea id="flaash-chat-message" rows="1" value={draft} onChange={event => setDraft(event.target.value)} onKeyDown={event => { if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); send(draft); } }} placeholder="Ask about FLAASH…" maxLength="1200" disabled={sending}/><button type="submit" disabled={!draft.trim() || sending} aria-label="Send message">{sending ? <LoaderCircle size={18}/> : <Send size={18}/>}</button></form>
       <p className="website-chat__note"><Sparkles size={12}/> Answers use current FLAASH website content.</p>
     </motion.section>}</AnimatePresence>
-    <button type="button" className="website-chat__toggle" onClick={() => setOpen(value => !value)} aria-label={open ? 'Close FLAASH assistant' : 'Open FLAASH assistant'} aria-expanded={open}>{open ? <X size={23}/> : <MessageCircle size={23}/>}<span>Ask FLAASH</span></button>
+    <button type="button" className="website-chat__toggle" onClick={() => setOpen(value => !value)} aria-label={open ? 'Close FLAASH assistant' : 'Open FLAASH assistant'} aria-expanded={open}>{open ? <X size={23}/> : <BotMessageSquare size={22}/>}<span className="sr-only">Ask FLAASH</span></button>
   </div>;
 }

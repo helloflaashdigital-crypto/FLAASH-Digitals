@@ -2,7 +2,9 @@ import { BarChart3, Brush, Code2, Megaphone, Search, Video, Target, MousePointer
 export const mergeServices = records => {
   const saved = Array.isArray(records) ? records : [];
   return [
-    ...services.map(service => saved.find(item => item.slug === service.slug) || service),
+    // CMS records do not store React icon components. Keep the matching
+    // built-in icon while allowing every editable CMS value to override it.
+    ...services.map(service => ({ ...service, ...(saved.find(item => item.slug === service.slug) || {}) })),
     ...saved.filter(item => !services.some(service => service.slug === item.slug))
   ];
 };
