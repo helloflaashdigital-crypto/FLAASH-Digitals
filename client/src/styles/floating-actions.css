@@ -44,7 +44,14 @@
 }
 .public-site > .whatsapp::after { content: none; }
 .public-site > .whatsapp svg,
-.public-site > .instagram-float svg { display: block; }
+.public-site > .instagram-float svg {
+  display: block;
+  width: 21px;
+  height: 21px;
+  margin: 0 !important;
+  flex: 0 0 auto;
+}
+.public-site > .instagram-float { overflow: hidden; }
 .website-chat__toggle {
   width: 50px;
   height: 50px;
@@ -87,14 +94,15 @@
     height: 48px;
     min-height: 48px;
   }
-  .public-site:has(.results-page) .site-atmosphere,
-  .public-site:has(.results-page) .scroll-progress { display: none !important; }
-  .public-site:has(.results-page) main {
+  .public-site--results .site-atmosphere,
+  .public-site--results .scroll-progress { display: none !important; }
+  .public-site--results main {
     transform: none !important;
     transition: none !important;
     will-change: auto !important;
   }
-  .public-site:has(.results-page) .results-page {
+  .public-site--results main > section::after { display: none !important; }
+  .public-site--results .results-page {
     touch-action: pan-y;
     -webkit-overflow-scrolling: touch;
   }
