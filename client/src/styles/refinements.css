@@ -510,6 +510,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .admin-selection-bar .danger { display:inline-flex; align-items:center; gap:7px; padding:8px 10px; border:1px solid #efc2bd; border-radius:6px; background:#fff8f7; }
 .admin-selection-bar .danger:disabled { opacity:.45; cursor:not-allowed; }
 .table-wrap input[type='checkbox'] { width:16px; height:16px; accent-color:var(--yellow); cursor:pointer; }
+.admin-leads-table { min-width: 760px !important; }
+.lead-budget { display: inline-flex; align-items: center; min-height: 28px; padding: 6px 9px; border: 1px solid #ead99d; border-radius: 6px; background: #fff8dc; color: #6d5100; font-size: .68rem; font-weight: 800; white-space: nowrap; }
 @media (max-width:600px) { .admin-selection-bar { align-items:flex-start; flex-direction:column; } }
 
 .service-image-upload { padding:15px; border:1px dashed #ddc990; border-radius:8px; background:#fffaf0; }
