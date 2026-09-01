@@ -17,9 +17,7 @@ body { background: var(--offwhite); color: var(--text); }
 .public-site { overflow-x: clip; background: var(--offwhite); }
 .site-atmosphere,
 .launch-screen,
-.navigation-loading,
-.public-site > .instagram-float,
-.public-site > .website-chat { display: none !important; }
+.navigation-loading { display: none !important; }
 .public-site main > section::after { display: none !important; }
 .scroll-progress { height: 2px; box-shadow: none; }
 
@@ -255,6 +253,27 @@ footer { padding-top: 70px; background: #0f1011; }
 .footer__grid { gap: 56px; }
 .footer__bottom { border-color: #2b2d2e; }
 
+/* Keep contact actions available without competing with the page content. */
+.public-site > .website-chat {
+  right: max(22px, env(safe-area-inset-right)) !important;
+  bottom: max(22px, env(safe-area-inset-bottom)) !important;
+}
+.public-site > .whatsapp {
+  right: max(22px, env(safe-area-inset-right)) !important;
+  bottom: max(84px, calc(env(safe-area-inset-bottom) + 62px)) !important;
+}
+.public-site > .instagram-float {
+  right: max(22px, env(safe-area-inset-right)) !important;
+  bottom: max(142px, calc(env(safe-area-inset-bottom) + 120px)) !important;
+}
+.public-site > .website-chat,
+.public-site > .whatsapp,
+.public-site > .instagram-float {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
 .site-loading {
   min-height: 100vh;
   display: flex;
@@ -341,6 +360,18 @@ footer { padding-top: 70px; background: #0f1011; }
   .cta .button { width: 100%; }
   .cta .button + .button { margin: 10px 0 0; }
   .footer__bottom { align-items: flex-start; flex-direction: column; gap: 14px; }
+  .public-site > .website-chat {
+    right: max(16px, env(safe-area-inset-right)) !important;
+    bottom: max(18px, env(safe-area-inset-bottom)) !important;
+  }
+  .public-site > .whatsapp {
+    right: max(16px, env(safe-area-inset-right)) !important;
+    bottom: max(78px, calc(env(safe-area-inset-bottom) + 60px)) !important;
+  }
+  .public-site > .instagram-float {
+    right: max(16px, env(safe-area-inset-right)) !important;
+    bottom: max(130px, calc(env(safe-area-inset-bottom) + 110px)) !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

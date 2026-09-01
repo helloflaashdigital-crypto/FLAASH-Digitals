@@ -3,7 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Navbar, Footer } from './components/Layout';
-const Chatbot = () => null;
+import Chatbot from './components/Chatbot';
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/PublicPages').then(module => ({ default: module.About })));
 const Services = lazy(() => import('./pages/PublicPages').then(module => ({ default: module.Services })));
