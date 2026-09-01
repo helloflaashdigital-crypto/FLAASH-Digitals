@@ -43,7 +43,7 @@ Server:
 ```env
 NODE_ENV=production
 MONGODB_URI=your-mongodb-atlas-uri
-CLIENT_URL=https://your-netlify-site.netlify.app
+CLIENT_URL=https://your-vercel-site.vercel.app
 JWT_SECRET=a-long-random-secret
 JWT_EXPIRES_IN=7d
 CLOUDINARY_CLOUD_NAME=
