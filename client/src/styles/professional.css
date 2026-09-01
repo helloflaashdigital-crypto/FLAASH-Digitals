@@ -417,11 +417,39 @@ footer { padding-top: 70px; background: #0f1011; }
   }
   .public-site > .whatsapp {
     right: max(16px, env(safe-area-inset-right)) !important;
-    bottom: max(78px, calc(env(safe-area-inset-bottom) + 60px)) !important;
+    bottom: max(76px, calc(env(safe-area-inset-bottom) + 58px)) !important;
+    width: 48px !important;
+    height: 48px !important;
+    min-height: 48px !important;
   }
   .public-site > .instagram-float {
     right: max(16px, env(safe-area-inset-right)) !important;
-    bottom: max(130px, calc(env(safe-area-inset-bottom) + 110px)) !important;
+    bottom: max(134px, calc(env(safe-area-inset-bottom) + 116px)) !important;
+    width: 48px !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    aspect-ratio: 1;
+    line-height: 0;
+  }
+  .public-site > .instagram-float svg {
+    display: block !important;
+    width: 23px !important;
+    height: 23px !important;
+    margin: 0 !important;
+    translate: none !important;
+    transform: none !important;
+    align-self: auto;
+    justify-self: auto;
+    stroke-width: 2.15;
+  }
+  .website-chat__toggle {
+    width: 48px !important;
+    height: 48px !important;
+    min-height: 48px !important;
   }
 }
 
