@@ -6,5 +6,6 @@ import App from './App';
 import './styles/global.css';
 import './styles/refinements.css';
 import './styles/floating-actions.css';
+import './styles/professional.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(<React.StrictMode><HelmetProvider><BrowserRouter><App /></BrowserRouter></HelmetProvider></React.StrictMode>);

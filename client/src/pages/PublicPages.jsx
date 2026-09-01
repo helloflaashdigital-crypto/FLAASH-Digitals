@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Check, ChevronRight, Filter, Mail, Phone, Send, ShieldCheck, Sparkles } from 'lucide-react';
+import { BarChart3 as Sparkles, Check, ChevronRight, Filter, Mail, Phone, Send, ShieldCheck } from 'lucide-react';
 import { services as defaultServices, projects as defaultProjects, getProjectArtwork, getProjectWebsite, mergeProjects, mergeServices, trimProjectImage, process, reasons } from '../data/content';
 import { getCollection, api } from '../services/api';
 import { Button, Container, Eyebrow, Reveal, SectionHeading, EmptyState } from '../components/UI';
 import ImagePlaceholder from '../components/ImagePlaceholder';
 function Hero({ eyebrow, title, copy }) { return <section className="page-hero"><Container><Eyebrow>{eyebrow}</Eyebrow><h1>{title}</h1>{copy&&<p>{copy}</p>}</Container></section>; }
-const serviceEmojis = { 'meta-ads': '📣', 'google-ads': '🔎', seo: '📈', branding: '🎨', 'web-development': '💻', 'video-marketing': '🎬', 'lead-generation': '🎯' };
 const serviceArtwork = {
   'social-media-marketing': '/images/social-media-marketing-hero.png',
   'meta-ads': '/images/meta-ads-hero.png',
@@ -20,7 +19,7 @@ const serviceArtwork = {
 function ServiceDetailHero({ item, title }) {
   const hasVideo = Boolean(item.heroVideoUrl);
   const artwork = serviceArtwork[item.slug];
-  const emoji = serviceEmojis[item.slug] || '⚡';
+  const emoji = '';
   return <section className={`service-detail-hero service-detail-hero--${item.slug}`}><Container><div className="service-detail-hero__copy"><p className="breadcrumbs"><Link to="/services">Services</Link><ChevronRight size={14}/><span>{title}</span></p><Eyebrow>SERVICE</Eyebrow><h1>{title}</h1><p>{item.shortDescription}</p><Button to="/contact">Start a Project</Button></div><div className="service-detail-hero__visual">{hasVideo && !artwork ? <><video className="service-detail-hero__video" autoPlay muted loop playsInline preload="metadata" poster={item.heroImage?.url}><source src={item.heroVideoUrl} type="video/mp4"/></video><div className="service-detail-hero__visual-overlay"/></> : item.heroImage?.url ? <img src={item.heroImage.url} alt={`${title} service visual`}/> : artwork ? <img className="service-detail-hero__illustration" src={artwork} alt={`${title} service illustration`}/> : <div className="service-mark" aria-label={`${title} visual`}><span aria-hidden="true"><b>{emoji}</b></span><small>FLAASH DIGITAL</small><strong>{title}</strong><i/></div>}</div></Container></section>;
 }
 const serviceTitle = s => s.title || s.name;

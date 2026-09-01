@@ -1,5 +1,10 @@
 import axios from 'axios';
-export const api = axios.create({ baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1', withCredentials: true });
+export const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1',
+  withCredentials: true,
+  timeout: 12000,
+  headers: { Accept: 'application/json' }
+});
 export const adminTokenKey = 'flaash_admin_token';
 export const getAdminToken = () => typeof window === 'undefined' ? '' : sessionStorage.getItem(adminTokenKey) || '';
 export const setAdminToken = token => { if (typeof window !== 'undefined' && token) sessionStorage.setItem(adminTokenKey, token); };
