@@ -26,10 +26,53 @@ export function Navbar() {
 }
 
 export function Footer() {
-  const [settings, setSettings] = useState({});
+  const [settings, setSettings] = useState({
+    email: 'flaashdigital@gmail.com',
+    phone: '+91 94945 82875'
+  });
   useEffect(() => { api.get('/settings').then(response => setSettings(response.data.data || {})).catch(() => {}); }, []);
   const whatsapp = settings.whatsapp || import.meta.env.VITE_WHATSAPP_NUMBER || '919494582875';
   const instagram = settings.instagram || defaultInstagram;
   const whatsappUrl = whatsapp ? `https://wa.me/${String(whatsapp).replace(/\D/g, '')}?text=${encodeURIComponent("Hi FLAASH Digital, I'm interested in discussing a digital marketing project.")}` : 'https://wa.me/';
-  return <><footer><Container className="footer__grid"><div><Brand dark /><p>{settings.footerText || 'Digital solutions designed to create attention, engagement and measurable growth.'}</p></div><div><h3>Company</h3>{links.slice(0, 5).map(([to, label]) => <Link key={to} to={to}>{label}</Link>)}</div><div><h3>Services</h3><Link to="/services">Marketing & performance</Link><Link to="/services">Creative & branding</Link><Link to="/services">Digital experiences</Link></div><div><h3>Contact</h3>{settings.email ? <a href={`mailto:${settings.email}`}>{settings.email}</a> : <Link to="/contact">Start a project</Link>}{settings.phone && <a href={`tel:${settings.phone}`}>{settings.phone}</a>}<Link to="/contact">Start a project</Link><p className="footer__note">{settings.address || 'Business contact details will appear here when configured in Site Settings.'}</p><div className="socials"><a aria-label="Instagram" href={instagram} target="_blank" rel="noreferrer"><AtSign/></a><a aria-label="LinkedIn" href={settings.linkedin || '#'}><BriefcaseBusiness/></a><a aria-label="Facebook" href={settings.facebook || '#'}><AtSign/></a><a aria-label="YouTube" href={settings.youtube || '#'}><CirclePlay/></a></div></div></Container><Container className="footer__bottom"><span>© {new Date().getFullYear()} FLAASH Digital. All rights reserved.</span><span><Link to="/admin/login">Admin Portal</Link><Link to="/privacy-policy">Privacy Policy</Link><Link to="/terms">Terms & Conditions</Link></span></Container></footer>{instagram && <a className="instagram-float" href={instagram} target="_blank" rel="noreferrer" aria-label="Visit FLAASH Digital on Instagram"><InstagramLogo/><span className="sr-only">Instagram</span></a>}{whatsapp && <a className="whatsapp" href={whatsappUrl} aria-label="Start a WhatsApp conversation"><WhatsAppLogo/><span className="sr-only">WhatsApp</span></a>}<button className="back-top" aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><ArrowUp size={18}/></button></>;
+  return <>
+    <footer>
+      <Container className="footer__grid">
+        <div>
+          <Brand dark />
+          <p>{settings.footerText || 'Digital solutions designed to create attention, engagement and measurable growth.'}</p>
+        </div>
+        <div>
+          <h3>Company</h3>
+          {links.slice(0, 5).map(([to, label]) => <Link key={to} to={to}>{label}</Link>)}
+        </div>
+        <div>
+          <h3>Services</h3>
+          <Link to="/services/seo">SEO services</Link>
+          <Link to="/services/google-ads">Google Ads management</Link>
+          <Link to="/services/social-media-marketing">Social media marketing</Link>
+          <Link to="/services/web-development">Website development</Link>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          {settings.email && <a href={`mailto:${settings.email}`}>{settings.email}</a>}
+          {settings.phone && <a href={`tel:${settings.phone}`}>{settings.phone}</a>}
+          <Link to="/contact">Start a project</Link>
+          {settings.address && <p className="footer__note">{settings.address}</p>}
+          <div className="socials">
+            {instagram && <a aria-label="Instagram" href={instagram} target="_blank" rel="me noopener noreferrer"><AtSign/></a>}
+            {settings.linkedin && <a aria-label="LinkedIn" href={settings.linkedin} target="_blank" rel="me noopener noreferrer"><BriefcaseBusiness/></a>}
+            {settings.facebook && <a aria-label="Facebook" href={settings.facebook} target="_blank" rel="me noopener noreferrer"><AtSign/></a>}
+            {settings.youtube && <a aria-label="YouTube" href={settings.youtube} target="_blank" rel="me noopener noreferrer"><CirclePlay/></a>}
+          </div>
+        </div>
+      </Container>
+      <Container className="footer__bottom">
+        <span>© {new Date().getFullYear()} FLAASH Digital. All rights reserved.</span>
+        <span><Link to="/privacy-policy">Privacy Policy</Link><Link to="/terms">Terms & Conditions</Link></span>
+      </Container>
+    </footer>
+    {instagram && <a className="instagram-float" href={instagram} target="_blank" rel="me noopener noreferrer" aria-label="Visit FLAASH Digital on Instagram"><InstagramLogo/><span className="sr-only">Instagram</span></a>}
+    {whatsapp && <a className="whatsapp" href={whatsappUrl} aria-label="Start a WhatsApp conversation"><WhatsAppLogo/><span className="sr-only">WhatsApp</span></a>}
+    <button className="back-top" aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><ArrowUp size={18}/></button>
+  </>;
 }
