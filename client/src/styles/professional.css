@@ -377,7 +377,9 @@ footer { padding-top: 70px; background: #0f1011; }
   .nav__inside { height: 66px; }
   .brand,
   .brand img { width: auto; height: 46px; }
-  .nav .brand__copy { display: none; }
+  .nav .brand__copy { display: grid; gap: 2px; min-width: 74px; }
+  .nav .brand__copy b { font-size: .98rem; line-height: 1; letter-spacing: -.045em; }
+  .nav .brand__copy small { font-size: .39rem; line-height: 1; letter-spacing: .2em; }
   .hero__grid { gap: 42px; padding: 54px 0 58px; }
   .hero h1 { font-size: clamp(3rem, 15vw, 4.35rem); line-height: .94; }
   .hero__copy > div > p { margin: 24px 0 27px; font-size: .94rem; line-height: 1.7; }
