@@ -1,4 +1,4 @@
-import { Menu, X, AtSign, BriefcaseBusiness, CirclePlay, ArrowUp, Search } from 'lucide-react';
+import { Menu, X, AtSign, BriefcaseBusiness, CirclePlay, ArrowUp, Search, LockKeyhole } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { Brand } from './Brand';
@@ -64,6 +64,7 @@ export function Footer() {
             {settings.facebook && <a aria-label="Facebook" href={settings.facebook} target="_blank" rel="me noopener noreferrer"><AtSign/></a>}
             {settings.youtube && <a aria-label="YouTube" href={settings.youtube} target="_blank" rel="me noopener noreferrer"><CirclePlay/></a>}
           </div>
+          <Link className="footer-admin-link" to="/admin/login"><LockKeyhole size={15}/>Admin Login</Link>
         </div>
       </Container>
       <Container className="footer__bottom">
