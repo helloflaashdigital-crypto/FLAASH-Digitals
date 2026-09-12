@@ -75,7 +75,7 @@ export default function VisitorPopup() {
   return createPortal(<dialog ref={dialog} className="visitor-popup" aria-labelledby="visitor-title" aria-describedby="visitor-description" onCancel={event => { event.preventDefault(); close(); }}>
     <button type="button" className="visitor-popup__close" aria-label="Close welcome popup" onClick={close}><X size={22}/></button>
     <p className="visitor-popup__eyebrow">WELCOME TO FLAASH</p>
-    <h2 id="visitor-title">{state === 'sent' ? 'Thanks for stopping by.' : 'Let?s grow your business.'}</h2>
+    <h2 id="visitor-title">{state === 'sent' ? 'Thanks for stopping by.' : 'Let\u2019s grow your business.'}</h2>
     <p id="visitor-description">{state === 'sent' ? 'Your details have been received. Our team will be in touch.' : 'Tell us a little about your company so our team can connect with you.'}</p>
     {state === 'sent' ? <div role="status"><button type="button" className="button" onClick={close}>Explore the website</button></div> : <form onSubmit={submit}>
       <div className="visitor-popup__fields">
@@ -86,7 +86,7 @@ export default function VisitorPopup() {
       <input name="website" className="honeypot" tabIndex={-1} autoComplete="off" aria-hidden="true"/>
       <p className="visitor-popup__notice">By submitting, you agree that FLAASH may contact you about your business. We record this visit and any details you submit. <Link to="/privacy-policy" onClick={close}>Privacy policy</Link></p>
       {error && <p className="form-error" role="alert">{error}</p>}
-      <div className="visitor-popup__actions"><button type="submit" className="button" disabled={state === 'sending'}>{state === 'sending' ? 'Sending?' : 'Let?s connect'}</button><button type="button" className="visitor-popup__skip" onClick={close}>Continue browsing</button></div>
+      <div className="visitor-popup__actions"><button type="submit" className="button" disabled={state === 'sending'}>{state === 'sending' ? 'Sending\u2026' : 'Let\u2019s connect'}</button><button type="button" className="visitor-popup__skip" onClick={close}>Continue browsing</button></div>
     </form>}
   </dialog>, document.body);
 }
