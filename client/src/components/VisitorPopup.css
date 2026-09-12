@@ -1,0 +1,17 @@
+.visitor-popup{width:min(880px,calc(100% - 32px));max-height:calc(100dvh - 40px);overflow:auto;border:1px solid #eadbc2;border-radius:18px;padding:42px;background:#fffaf1;color:#171717;box-shadow:0 24px 100px #0004}
+.visitor-popup::backdrop{background:#14110caa;backdrop-filter:blur(5px)}
+.visitor-popup__close{position:absolute;right:16px;top:16px;display:grid;place-items:center;width:38px;height:38px;background:#fff;border:1px solid #e4d8c7;border-radius:50%;cursor:pointer}
+.visitor-popup__eyebrow{font-size:.7rem;font-weight:800;letter-spacing:.12em;color:#a75000;margin:0 40px 15px 0}
+.visitor-popup h2{font:700 clamp(1.9rem,4vw,2.7rem)/1.1 'Space Grotesk',sans-serif;letter-spacing:-.04em;margin:0 0 16px}
+.visitor-popup>p:not(.visitor-popup__eyebrow){color:#625a50;line-height:1.7;margin-bottom:26px}
+.visitor-popup__fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.visitor-popup label{display:grid;gap:8px;font-size:.8rem;font-weight:700}
+.visitor-popup input{width:100%;min-width:0;border:1px solid #d8cebf;border-radius:7px;background:#fff;padding:13px;font:inherit}
+.visitor-popup input:focus-visible,.visitor-popup button:focus-visible,.visitor-popup a:focus-visible{outline:3px solid #d56a10;outline-offset:3px}
+.visitor-popup__notice{font-size:.74rem;line-height:1.7;color:#625a50;margin:20px 0}
+.visitor-popup__notice a{text-decoration:underline}
+.visitor-popup__actions{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.visitor-popup .button{background:#ffca42;color:#171717;border:0;cursor:pointer}
+.visitor-popup .button:disabled{opacity:.6;cursor:wait}
+.visitor-popup__skip{border:0;background:transparent;font-weight:700;padding:12px 0;cursor:pointer;color:#625a50}
+@media(max-width:680px){.visitor-popup{padding:38px 22px 26px}.visitor-popup__fields{grid-template-columns:1fr;gap:14px}}

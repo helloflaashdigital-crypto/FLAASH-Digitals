@@ -9,6 +9,7 @@ import publicRoutes from './routes/publicRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
 import chatRoutes from './routes/chatRoutes.js';
+import visitorRoutes from './routes/visitorRoutes.js';
 import { notFound, errorHandler } from './middleware/errors.js';
 
 const app = express();
@@ -43,6 +44,7 @@ app.get('/api/v1/health', (req, res) => res.json({ success: true, status: 'healt
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/admin', adminRoutes);
 app.use('/api/v1/chat', chatRoutes);
+app.use('/api/v1', visitorRoutes);
 app.use('/api/v1/contact', contactLimit);
 app.use('/api/v1', (req, res, next) => {
   if (req.method === 'GET') res.set('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');

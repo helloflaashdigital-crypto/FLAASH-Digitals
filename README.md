@@ -104,3 +104,13 @@ Set every server environment variable above. MongoDB Atlas network access must p
 - Add approved logo asset, project images, social URLs, legal text, results, testimonials and team information.
 - Verify CORS origin, cookie behaviour and Render health endpoint after deployment.
 - Test public navigation, mobile layout, contact submission, admin login, CMS publishing, uploads and protected API routes.
+
+## Visitor welcome form and team photos
+
+The public site displays a dismissible welcome form once per browser tab session. It records an anonymous visit, then attaches the company name, email and phone only when the visitor submits. Session storage contains a random session identifier and dismissal state, never contact details. No IP addresses, query strings or browser fingerprints are stored in visitor records. Admin pages do not record visits.
+
+Admins and superadmins can open **Visitors** to see sessions, contact details, timestamps and landing pages, filter submitted/anonymous visits, refresh and paginate. Dashboard cards show visitor and submitted-contact totals. Browser sessions are not a count of unique people; tracking depends on JavaScript and API availability.
+
+In **Team ? Add/Edit**, choose a photo, preview it and save. Photos can be replaced or removed; published members appear on the About page. JPEG, PNG, WebP and AVIF files up to 5 MB are accepted. Configure all three Cloudinary environment values for durable production uploads. Production reports storage failures instead of silently falling back to ephemeral local files; local development retains the existing local upload fallback.
+
+Run `node --test scripts/test-visitor-features.mjs` from `server` for the visitor API, access control and team upload regression checks, and `npm run build` from `client` for the frontend build.

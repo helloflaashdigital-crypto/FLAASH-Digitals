@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import multer from 'multer';
+import AppError from '../utils/AppError.js';
 import { protect, allowRoles } from '../middleware/auth.js';
 import { listAdmin, getAdmin, create, update, remove, removeMany } from '../controllers/contentController.js';
 import { dashboard } from '../controllers/adminController.js';
@@ -12,16 +13,19 @@ import CaseStudy from '../models/CaseStudy.js';
 import Testimonial from '../models/Testimonial.js';
 import Client from '../models/Client.js';
 import TeamMember from '../models/TeamMember.js';
+import { listVisitors } from '../controllers/visitorController.js';
 
 const router = Router();
 const uploadMemory = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: 5 * 1024 * 1024 },
-  fileFilter: (req, file, callback) => callback(null, /image\/(jpeg|png|webp|avif)/.test(file.mimetype)),
+  fileFilter: (req, file, callback) => /^image\/(jpeg|png|webp|avif)$/.test(file.mimetype)
+    ? callback(null, true) : callback(new AppError('Choose a JPEG, PNG, WebP or AVIF image', 415)),
 });
 
 router.use(protect);
 router.get('/dashboard', dashboard);
+router.get('/visitors', allowRoles('superadmin', 'admin'), listVisitors);
 
 const resources = { services: Service, projects: Project, 'case-studies': CaseStudy, testimonials: Testimonial, clients: Client, team: TeamMember };
 const defaultServices = [

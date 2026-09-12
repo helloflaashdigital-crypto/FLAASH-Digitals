@@ -24,6 +24,7 @@ export async function upload(req, res) {
   if (!req.file) throw new AppError('Select an image to upload', 400);
   const folder = `flaash/${req.body.folder || 'general'}`;
   if (!process.env.CLOUDINARY_CLOUD_NAME) {
+    if (process.env.NODE_ENV === 'production') throw new AppError('Image storage is unavailable. Please check the Cloudinary configuration and try again.', 503);
     const data = await localUpload(req);
     return res.status(201).json({ success: true, message: 'Cloudinary is not configured. The image was stored locally for development.', data });
   }
@@ -35,6 +36,7 @@ export async function upload(req, res) {
     return res.status(201).json({ success: true, data: { url: result.secure_url, publicId: result.public_id, width: result.width, height: result.height, format: result.format, alt: req.body.alt || '', storage: 'cloudinary' } });
   } catch (error) {
     console.error('Cloudinary upload failed:', error?.http_code || error?.error?.http_code || error?.message);
+    if (process.env.NODE_ENV === 'production') throw new AppError('Image storage is unavailable. Please check the Cloudinary configuration and try again.', 503);
     const data = await localUpload(req);
     return res.status(201).json({ success: true, message: 'Cloudinary could not be reached. The image was stored locally for development.', data });
   }
