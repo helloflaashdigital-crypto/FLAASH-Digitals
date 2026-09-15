@@ -1,55 +1,66 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://flaash-digitals.vercel.app/</loc>
-    <lastmod>2026-09-01</lastmod>
+    <loc>https://www.flaashdigital.com/</loc>
   </url>
   <url>
-    <loc>https://flaash-digitals.vercel.app/about</loc>
-    <lastmod>2026-09-01</lastmod>
+    <loc>https://www.flaashdigital.com/about</loc>
   </url>
   <url>
-    <loc>https://flaash-digitals.vercel.app/services</loc>
-    <lastmod>2026-09-01</lastmod>
+    <loc>https://www.flaashdigital.com/services</loc>
   </url>
   <url>
-    <loc>https://flaash-digitals.vercel.app/services/social-media-marketing</loc>
-    <lastmod>2026-09-01</lastmod>
+    <loc>https://www.flaashdigital.com/services/social-media-marketing</loc>
+    <lastmod>2026-08-20T10:37:02.393Z</lastmod>
   </url>
   <url>
-    <loc>https://flaash-digitals.vercel.app/services/meta-ads</loc>
-    <lastmod>2026-09-01</lastmod>
+    <loc>https://www.flaashdigital.com/services/meta-ads</loc>
+    <lastmod>2026-08-20T10:37:02.404Z</lastmod>
   </url>
   <url>
-    <loc>https://flaash-digitals.vercel.app/services/google-ads</loc>
-    <lastmod>2026-09-01</lastmod>
+    <loc>https://www.flaashdigital.com/services/google-ads</loc>
+    <lastmod>2026-08-20T10:37:02.411Z</lastmod>
   </url>
   <url>
-    <loc>https://flaash-digitals.vercel.app/services/seo</loc>
-    <lastmod>2026-09-01</lastmod>
+    <loc>https://www.flaashdigital.com/services/seo</loc>
+    <lastmod>2026-08-20T10:37:02.587Z</lastmod>
   </url>
   <url>
-    <loc>https://flaash-digitals.vercel.app/services/branding</loc>
-    <lastmod>2026-09-01</lastmod>
+    <loc>https://www.flaashdigital.com/services/branding</loc>
+    <lastmod>2026-08-20T10:37:02.409Z</lastmod>
   </url>
   <url>
-    <loc>https://flaash-digitals.vercel.app/services/web-development</loc>
-    <lastmod>2026-09-01</lastmod>
+    <loc>https://www.flaashdigital.com/services/web-development</loc>
+    <lastmod>2026-08-20T10:37:02.408Z</lastmod>
   </url>
   <url>
-    <loc>https://flaash-digitals.vercel.app/services/video-marketing</loc>
-    <lastmod>2026-09-01</lastmod>
+    <loc>https://www.flaashdigital.com/services/video-marketing</loc>
+    <lastmod>2026-08-20T10:37:02.537Z</lastmod>
   </url>
   <url>
-    <loc>https://flaash-digitals.vercel.app/services/lead-generation</loc>
-    <lastmod>2026-09-01</lastmod>
+    <loc>https://www.flaashdigital.com/services/lead-generation</loc>
+    <lastmod>2026-08-20T10:37:02.568Z</lastmod>
   </url>
   <url>
-    <loc>https://flaash-digitals.vercel.app/work</loc>
-    <lastmod>2026-09-01</lastmod>
+    <loc>https://www.flaashdigital.com/work</loc>
   </url>
   <url>
-    <loc>https://flaash-digitals.vercel.app/contact</loc>
-    <lastmod>2026-09-01</lastmod>
+    <loc>https://www.flaashdigital.com/work/indian-cricket-academy</loc>
+    <lastmod>2026-08-20T08:03:51.864Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.flaashdigital.com/work/eace</loc>
+    <lastmod>2026-08-20T08:28:13.466Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.flaashdigital.com/work/the-trading-hustlers</loc>
+    <lastmod>2026-09-08T04:49:54.305Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.flaashdigital.com/work/tws-the-work-suites</loc>
+    <lastmod>2026-08-20T08:28:37.244Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.flaashdigital.com/contact</loc>
   </url>
 </urlset>

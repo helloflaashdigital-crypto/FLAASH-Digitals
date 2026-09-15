@@ -1,0 +1,95 @@
+{
+  "services": [
+    {
+      "slug": "branding",
+      "title": "Branding & Graphic Design",
+      "shortDescription": "Distinctive identities and everyday creative systems.",
+      "updatedAt": "2026-08-20T10:37:02.409Z"
+    },
+    {
+      "slug": "google-ads",
+      "title": "Google Ads",
+      "shortDescription": "Reach high-intent customers at their moment of decision.",
+      "updatedAt": "2026-08-20T10:37:02.411Z"
+    },
+    {
+      "slug": "lead-generation",
+      "title": "Lead Generation",
+      "shortDescription": "An accountable pipeline from first click to qualified inquiry.",
+      "updatedAt": "2026-08-20T10:37:02.568Z"
+    },
+    {
+      "slug": "meta-ads",
+      "title": "Meta Ads",
+      "shortDescription": "Campaigns engineered for reach, qualified leads and efficient spend.",
+      "updatedAt": "2026-08-20T10:37:02.404Z"
+    },
+    {
+      "slug": "seo",
+      "title": "SEO",
+      "shortDescription": "Search visibility built on useful content and technical clarity.",
+      "updatedAt": "2026-08-20T10:37:02.587Z"
+    },
+    {
+      "slug": "social-media-marketing",
+      "title": "Social Media Marketing",
+      "shortDescription": "A social presence that earns attention and builds community.",
+      "updatedAt": "2026-08-20T10:37:02.393Z"
+    },
+    {
+      "slug": "video-marketing",
+      "title": "Video & Reels Marketing",
+      "shortDescription": "Short-form stories designed for the feed and the funnel.",
+      "updatedAt": "2026-08-20T10:37:02.537Z"
+    },
+    {
+      "slug": "web-development",
+      "title": "Website Development",
+      "shortDescription": "High-performing digital experiences built to convert.",
+      "updatedAt": "2026-08-20T10:37:02.408Z"
+    }
+  ],
+  "projects": [
+    {
+      "slug": "eace",
+      "name": "EACE",
+      "shortDescription": "A focused digital engagement shaped around real business objectives.",
+      "updatedAt": "2026-08-20T08:28:13.466Z",
+      "thumbnail": {
+        "url": "https://res.cloudinary.com/rkkvt64s/image/upload/v1787214493/flaash/projects/zvii7sr35sxkw8fohsbe.jpg"
+      }
+    },
+    {
+      "slug": "indian-cricket-academy",
+      "name": "Indian Cricket Academy",
+      "shortDescription": "A focused digital engagement shaped around real business objectives.",
+      "updatedAt": "2026-08-20T08:03:51.864Z",
+      "thumbnail": {
+        "url": "https://res.cloudinary.com/rkkvt64s/image/upload/v1787213032/flaash/projects/ybjzh9yfqzev5gaaorro.png"
+      }
+    },
+    {
+      "slug": "the-trading-hustlers",
+      "name": "The Trading Hustlers",
+      "shortDescription": "A focused digital engagement shaped around real business objectives.",
+      "description": "",
+      "updatedAt": "2026-09-08T04:49:54.305Z",
+      "heroImage": {
+        "url": "https://res.cloudinary.com/rkkvt64s/image/upload/v1788842993/flaash/projects/ofzuqn0hfohocw454dbm.jpg"
+      },
+      "thumbnail": {
+        "url": "https://res.cloudinary.com/rkkvt64s/image/upload/v1788842993/flaash/projects/ofzuqn0hfohocw454dbm.jpg"
+      }
+    },
+    {
+      "slug": "tws-the-work-suites",
+      "name": "TWS — The Work Suites",
+      "shortDescription": "A focused digital engagement shaped around real business objectives.",
+      "updatedAt": "2026-08-20T08:28:37.244Z",
+      "thumbnail": {
+        "url": "https://res.cloudinary.com/rkkvt64s/image/upload/v1787214517/flaash/projects/bzv2h5hezikuhu6fbdsb.jpg"
+      }
+    }
+  ],
+  "case-studies": []
+}

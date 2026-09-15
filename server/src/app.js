@@ -21,7 +21,7 @@ const contactLimit = rateLimit({
   message: { success: false, message: 'Too many inquiries from this network. Please try again later.' }
 });
 const configuredOrigins = (process.env.CLIENT_URL || '').split(',').map(value => value.trim()).filter(Boolean);
-const allowedOrigins = new Set([...configuredOrigins, 'http://localhost:5173', 'https://flaash-digitals.vercel.app']);
+const allowedOrigins = new Set([...configuredOrigins, 'http://localhost:5173', 'https://flaash-digitals.vercel.app', 'https://www.flaashdigital.com', 'https://flaashdigital.com']);
 app.set('trust proxy', 1);
 app.set('etag', 'strong');
 app.disable('x-powered-by');

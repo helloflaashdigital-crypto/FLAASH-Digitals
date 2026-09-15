@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin
 
-Sitemap: https://flaash-digitals.vercel.app/sitemap.xml
+Sitemap: https://www.flaashdigital.com/sitemap.xml

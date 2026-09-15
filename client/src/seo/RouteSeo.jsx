@@ -1,13 +1,19 @@
+import { useLayoutEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import { absoluteUrl, buildStructuredData, getSeoPage, SITE_NAME } from './seoConfig';
 
 const indexRobots = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
-const noIndexRobots = 'noindex, nofollow, noarchive';
+const noIndexRobots = 'noindex, follow';
 
-export default function RouteSeo() {
+export default function RouteSeo({ page: suppliedPage } = {}) {
   const { pathname } = useLocation();
-  const page = getSeoPage(pathname);
+  useLayoutEffect(() => {
+    // React 19 manages the live tags; remove only the build-generated copies
+    // after React commits their replacements, avoiding duplicate canonicals.
+    document.head.querySelectorAll('[data-rh="true"]').forEach(node => node.remove());
+  }, []);
+  const page = suppliedPage || getSeoPage(pathname);
   const canonical = absoluteUrl(page.path);
   const image = absoluteUrl(page.image);
   const robots = page.noIndex ? noIndexRobots : indexRobots;
@@ -21,6 +27,7 @@ export default function RouteSeo() {
     <meta name='author' content={SITE_NAME}/>
     <link rel='canonical' href={canonical}/>
     <meta property='og:type' content='website'/>
+    <meta property='og:locale' content='en_IN'/>
     <meta property='og:site_name' content={SITE_NAME}/>
     <meta property='og:title' content={page.title}/>
     <meta property='og:description' content={page.description}/>
@@ -31,6 +38,7 @@ export default function RouteSeo() {
     <meta name='twitter:title' content={page.title}/>
     <meta name='twitter:description' content={page.description}/>
     <meta name='twitter:image' content={image}/>
-    <script type='application/ld+json'>{JSON.stringify(buildStructuredData(page))}</script>
+    <meta name='twitter:image:alt' content={`${page.title} - ${SITE_NAME}`}/>
+    <script type='application/ld+json'>{JSON.stringify(buildStructuredData(page)).replaceAll('<', '\\u003c')}</script>
   </Helmet>;
 }

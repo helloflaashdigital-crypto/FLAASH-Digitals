@@ -219,7 +219,7 @@ body { background: var(--offwhite); color: var(--text); }
 .section-heading h2,
 .intro h2,
 .split h2,
-.detail-grid main h2,
+.detail-grid .detail-content h2,
 .cta h2 {
   font-family: 'Space Grotesk', Manrope, sans-serif;
   font-weight: 650;

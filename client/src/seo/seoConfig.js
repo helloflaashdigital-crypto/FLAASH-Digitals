@@ -1,6 +1,7 @@
-export const SITE_URL = 'https://flaash-digitals.vercel.app';
+import publishedContent from './publishedContent.json' with { type: 'json' };
+export const SITE_URL = 'https://www.flaashdigital.com';
 export const SITE_NAME = 'FLAASH Digital';
-export const SEO_LAST_MODIFIED = '2026-09-01';
+
 
 const DEFAULT_IMAGE = '/images/featured-case-study-cover.png';
 const ORGANIZATION_ID = `${SITE_URL}/#organization`;
@@ -88,11 +89,11 @@ const projectPages = [
   description: `${name} is a published ${category.toLowerCase()} project in the FLAASH Digital portfolio.`,
   image: projectImages[slug] || DEFAULT_IMAGE,
   kind: 'WebPage',
-  noIndex: true,
+  noIndex: false,
   breadcrumbs: breadcrumb(['Home', '/'], ['Our Work', '/work'], [name, `/work/${slug}`])
 }));
 
-export const seoPages = [
+const baseSeoPages = [
   {
     path: '/',
     title: 'Digital Marketing Agency for Business Growth | FLAASH',
@@ -164,6 +165,42 @@ export const seoPages = [
   }
 ];
 
+
+const cleanText = value => typeof value === 'string' ? value.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim() : '';
+export function getContentSeoPage(type, item) {
+  const prefix = { services: '/services', projects: '/work', 'case-studies': '/results' }[type];
+  if (!prefix || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(item.slug || '')) throw new Error('Invalid public content route');
+  const path = prefix + '/' + item.slug;
+  const existing = baseSeoPages.find(page => page.path === path);
+  const name = cleanText(item.title || item.name) || existing?.serviceType || 'Details';
+  const summary = cleanText(item.shortDescription || item.description || item.challenge);
+  const title = cleanText(item.seoTitle) || existing?.title || (name + ' | FLAASH Digital ' + (type === 'services' ? 'Services' : type === 'projects' ? 'Work' : 'Case Study'));
+  const description = cleanText(item.seoDescription) || (type === 'services' && existing?.description)
+    || (summary ? name + ': ' + summary : name + ' - explore this published ' + (type === 'services' ? 'service' : type === 'projects' ? 'project' : 'case study') + ' from FLAASH Digital.');
+  const label = { services: 'Services', projects: 'Our Work', 'case-studies': 'Results' }[type];
+  return {
+    ...existing, path, title, description: description.slice(0, 170),
+    image: item.heroImage?.url || item.thumbnail?.url || item.coverImage?.url || existing?.image || DEFAULT_IMAGE,
+    kind: 'WebPage', noIndex: false,
+    ...(type === 'services' ? { serviceType: name } : {}),
+    ...(item.updatedAt ? { lastModified: item.updatedAt } : {}),
+    breadcrumbs: breadcrumb(['Home', '/'], [label, prefix], [name, path])
+  };
+}
+const publicPages = new Map(baseSeoPages.map(page => [page.path, page]));
+for (const [type, records] of Object.entries(publishedContent)) {
+  for (const item of records) {
+    const page = getContentSeoPage(type, item);
+    publicPages.set(page.path, page);
+  }
+}
+const resultsPage = publicPages.get('/results');
+if (publishedContent['case-studies'].length) {
+  resultsPage.noIndex = false;
+  resultsPage.description = 'Explore published FLAASH Digital case studies, client challenges, strategies and campaign results.';
+}
+export const seoPages = [...publicPages.values()];
+
 export const indexableSeoPages = seoPages.filter(page => !page.noIndex);
 const pagesByPath = new Map(seoPages.map(page => [page.path, page]));
 
@@ -173,11 +210,18 @@ export function normalizePath(pathname = '/') {
 }
 
 export function absoluteUrl(path = '/') {
-  return path.startsWith('http') ? path : `${SITE_URL}${path === '/' ? '/' : path}`;
+  const url = new URL(path || '/', SITE_URL);
+  return ['https:', 'http:'].includes(url.protocol) ? url.href : new URL(DEFAULT_IMAGE, SITE_URL).href;
 }
 
 export function getSeoPage(pathname) {
   const path = normalizePath(pathname);
+  if (path === '/admin' || path.startsWith('/admin/')) return { path, title: 'Admin | FLAASH Digital', description: 'FLAASH Digital administration.', image: DEFAULT_IMAGE, noIndex: true };
+  const match = path.match(/^\/(services|work|results)\/([a-z0-9]+(?:-[a-z0-9]+)*)$/);
+  if (!pagesByPath.has(path) && match) {
+    const type = { services: 'services', work: 'projects', results: 'case-studies' }[match[1]];
+    return getContentSeoPage(type, { slug: match[2], title: { services: 'Service details', work: 'Project details', results: 'Case study' }[match[1]] });
+  }
   return pagesByPath.get(path) || {
     path,
     title: 'Page Not Found | FLAASH Digital',

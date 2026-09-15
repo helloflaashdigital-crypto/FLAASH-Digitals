@@ -26,8 +26,20 @@
   ],
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/"
+      "source": "/admin/:path*",
+      "destination": "/spa"
+    },
+    {
+      "source": "/services/:slug",
+      "destination": "/spa"
+    },
+    {
+      "source": "/work/:slug",
+      "destination": "/spa"
+    },
+    {
+      "source": "/results/:slug",
+      "destination": "/spa"
     }
   ]
 }

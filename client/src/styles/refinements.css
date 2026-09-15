@@ -344,9 +344,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .section { padding: 68px 0; }
   .page-hero { padding: 78px 0 54px; }
   .page-hero h1 { font-size: clamp(2.55rem, 13vw, 3.5rem); }
-  .page-hero p, .section-heading > p, .detail-grid main > p { font-size: .94rem; line-height: 1.7; }
+  .page-hero p, .section-heading > p, .detail-grid .detail-content > p { font-size: .94rem; line-height: 1.7; }
   .section-heading { margin-bottom: 30px; }
-  .section-heading h2, .intro h2, .split h2, .detail-grid main h2, .cta h2 { font-size: clamp(2.05rem, 10.4vw, 2.55rem); }
+  .section-heading h2, .intro h2, .split h2, .detail-grid .detail-content h2, .cta h2 { font-size: clamp(2.05rem, 10.4vw, 2.55rem); }
   .service-detail-hero > .container { padding-top: 46px; padding-bottom: 36px; gap: 30px; }
   .service-detail-hero__copy > p:not(.breadcrumbs) { margin: 19px 0 24px; }
   .breadcrumbs { margin-bottom: 23px; }

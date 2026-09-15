@@ -60,11 +60,11 @@ Client:
 
 ```env
 VITE_API_URL=https://your-render-service.onrender.com/api/v1
-VITE_SITE_URL=https://your-netlify-site.netlify.app
+VITE_SITE_URL=https://www.flaashdigital.com
 VITE_WHATSAPP_NUMBER=
 ```
 
-Never expose server credentials in the client environment file. Replace `YOUR-NETLIFY-DOMAIN` in `client/public/sitemap.xml` before launch, then extend the sitemap for published dynamic content.
+Never expose server credentials in the client environment file. SEO URLs use https://www.flaashdigital.com. The build regenerates sitemap.xml from the public route catalog and published CMS content.
 
 ## Website assistant
 
@@ -89,18 +89,18 @@ Configure the final phone, WhatsApp number, email, address, social links and app
 
 Set every server environment variable above. MongoDB Atlas network access must permit the Render service.
 
-### Netlify client
+### Vercel client
 
-- Base directory: `client`
+- Project directory: `client`
 - Build command: `npm run build`
-- Publish directory: `client/dist`
+- Output directory: `dist`
 
-`client/netlify.toml` includes the SPA redirect needed for direct refreshes on nested routes.
+`client/vercel.json` preserves direct public routes and the SPA fallback for admin/CMS details. Hostinger DNS points the production domain to this existing Vercel project.
 
 ## Production checklist
 
 - Add MongoDB Atlas and Cloudinary credentials.
-- Change all obvious placeholder business details in Site Settings and the sitemap domain.
+- Review placeholder business details in Site Settings; the canonical and sitemap domain is www.flaashdigital.com.
 - Add approved logo asset, project images, social URLs, legal text, results, testimonials and team information.
 - Verify CORS origin, cookie behaviour and Render health endpoint after deployment.
 - Test public navigation, mobile layout, contact submission, admin login, CMS publishing, uploads and protected API routes.
@@ -114,3 +114,7 @@ Admins and superadmins can open **Visitors** to see sessions, contact details, t
 In **Team ? Add/Edit**, choose a photo, preview it and save. Photos can be replaced or removed; published members appear on the About page. JPEG, PNG, WebP and AVIF files up to 5 MB are accepted. Configure all three Cloudinary environment values for durable production uploads. Production reports storage failures instead of silently falling back to ephemeral local files; local development retains the existing local upload fallback.
 
 Run `node --test scripts/test-visitor-features.mjs` from `server` for the visitor API, access control and team upload regression checks, and `npm run build` from `client` for the frontend build.
+
+## Google Search Console readiness
+
+See [SEO_READINESS.md](SEO_READINESS.md) for the complete route inventory, every changed file, local/production test commands and the Hostinger DNS verification, sitemap submission and URL Inspection steps. Run a normal build and redeploy after publishing CMS changes.
