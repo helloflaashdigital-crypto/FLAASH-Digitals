@@ -176,7 +176,7 @@ export function getContentSeoPage(type, item) {
   const summary = cleanText(item.shortDescription || item.description || item.challenge);
   const title = cleanText(item.seoTitle) || existing?.title || (name + ' | FLAASH Digital ' + (type === 'services' ? 'Services' : type === 'projects' ? 'Work' : 'Case Study'));
   const description = cleanText(item.seoDescription) || (type === 'services' && existing?.description)
-    || (summary ? name + ': ' + summary : name + ' - explore this published ' + (type === 'services' ? 'service' : type === 'projects' ? 'project' : 'case study') + ' from FLAASH Digital.');
+    || (summary.length >= 30 ? name + ': ' + summary : name + ' - explore this published ' + (type === 'services' ? 'service' : type === 'projects' ? 'project' : 'case study') + ' from FLAASH Digital.');
   const label = { services: 'Services', projects: 'Our Work', 'case-studies': 'Results' }[type];
   return {
     ...existing, path, title, description: description.slice(0, 170),

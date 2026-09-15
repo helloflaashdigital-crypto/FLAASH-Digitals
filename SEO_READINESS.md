@@ -12,7 +12,7 @@ The UI, business copy, forms, admin functions and hosting providers are preserve
 
 ## Public routes
 
-Indexable and included in the sitemap (17 URLs):
+Indexable and included in the sitemap (19 URLs):
 - /
 - /about
 - /services
@@ -30,9 +30,10 @@ Indexable and included in the sitemap (17 URLs):
 - /work/the-trading-hustlers
 - /work/tws-the-work-suites
 - /contact
+- /results
+- /results/abc
 
 Existing public routes deliberately excluded:
-- /results: the published case-study collection is currently empty. A normal build makes it indexable once published case studies exist.
 - /privacy-policy and /terms: existing placeholder text awaits approved business/legal copy. No copy was invented or removed.
 
 Dynamic CMS routes:
@@ -163,3 +164,7 @@ The project pages are publicly available and technically indexable, but their na
 Publishing new content requires rebuilding/redeploying to refresh static metadata and the sitemap. React still renders page bodies with JavaScript; the live Search Console inspection should confirm that Google can render them. Existing site design and visitor-popup behavior were retained.
 
 Passing these checks, deploying, submitting a sitemap or requesting indexing does not prove that Google indexed any page. Indexing and ranking are Google's decisions. Confirm actual indexed status only in the verified Search Console property; no indexing claim is made here.
+
+## Case-study publication update
+
+The published case study ABC at /results/abc enables indexing of /results after a normal build. Both URLs are now in the sitemap. Its current title and challenge (ABC and BNM) appear to be placeholders; replace them with real approved case-study content before requesting indexing. Short CMS summaries now use a descriptive metadata fallback without inventing business outcomes.

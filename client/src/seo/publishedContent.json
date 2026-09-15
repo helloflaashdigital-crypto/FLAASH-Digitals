@@ -91,5 +91,15 @@
       }
     }
   ],
-  "case-studies": []
+  "case-studies": [
+    {
+      "slug": "abc",
+      "title": "ABC",
+      "challenge": "BNM",
+      "updatedAt": "2026-09-15T15:22:42.067Z",
+      "coverImage": {
+        "url": "https://res.cloudinary.com/rkkvt64s/image/upload/v1789485759/flaash/case-studies/cai229s9baemu9x7goar.jpg"
+      }
+    }
+  ]
 }

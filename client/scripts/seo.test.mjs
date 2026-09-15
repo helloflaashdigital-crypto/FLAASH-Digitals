@@ -60,3 +60,9 @@ test('Vercel preserves known-route files, private routes, and CMS fallbacks with
   assert.ok(!config.rewrites.some(rule => rule.source === '/(.*)'));
   assert.ok(config.headers.some(rule => rule.source === '/admin/:path*' && rule.headers.some(header => header.key === 'X-Robots-Tag' && header.value.includes('noindex'))));
 });
+
+test('short CMS summaries receive a descriptive fallback without fabricated outcomes', () => {
+  const page = getContentSeoPage('case-studies', { slug: 'abc', title: 'ABC', challenge: 'BNM' });
+  assert.equal(page.description, 'ABC - explore this published case study from FLAASH Digital.');
+  assert.equal(page.noIndex, false);
+});
