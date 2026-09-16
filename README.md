@@ -70,6 +70,10 @@ Never expose server credentials in the client environment file. SEO URLs use htt
 
 The floating **Ask FLAASH** assistant reads the current published services, projects, case studies, testimonials, clients, team, homepage copy and site settings from MongoDB for each message. This means content published or changed in the admin portal is reflected on the next question automatically — no manual model training or redeployment is needed.
 
+Common questions about services, service details, work, case studies, pricing enquiries and contact details read the relevant published CMS records directly, avoiding AI generation latency. Greetings also respond without an AI call. More complex questions and recommendations retain conversation-aware Gemini answers. Both paths keep the same formatted chat interface.
+
+Run chat regression checks with `node --test client/scripts/chat.test.mjs server/scripts/test-chat.mjs server/scripts/test-chat-quick-reply.mjs` from the repository root.
+
 Add a newly generated `GEMINI_API_KEY` only to `server/.env` locally and to the server environment variables in production. Never add it to `client/.env`, commit it, or paste it into website code. The endpoint is rate-limited and accepts short messages only.
 
 ## Content workflow

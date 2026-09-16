@@ -5,7 +5,7 @@ import { createChatHandler } from '../src/controllers/chatController.js';
 process.env.GEMINI_API_KEY = 'chat-test-key-not-real';
 const request = (message = 'services', history = []) => ({ body: { message, history } });
 const invoke = async (handler, req = request()) => { let body; await handler(req, { json: value => { body = value; } }); return body; };
-const handlerFor = generateContent => createChatHandler({ loadKnowledge: async () => 'Services: SEO, Branding', createClient: () => ({ models: { generateContent } }) });
+const handlerFor = generateContent => createChatHandler({ quickReply: async () => null, loadKnowledge: async () => 'Services: SEO, Branding', createClient: () => ({ models: { generateContent } }) });
 
 test('service questions get sufficient output budget and complete replies', async () => {
   const fullReply = 'A complete sentence. '.repeat(130);
@@ -22,7 +22,7 @@ test('service questions get sufficient output budget and complete replies', asyn
 
 test('follow-ups use fresh public knowledge and exclude failed replies and system roles', async () => {
   let version = 0;
-  const handler = createChatHandler({ loadKnowledge: async () => 'Website version ' + (++version), createClient: () => ({ models: { generateContent: async options => {
+  const handler = createChatHandler({ quickReply: async () => null, loadKnowledge: async () => 'Website version ' + (++version), createClient: () => ({ models: { generateContent: async options => {
     assert.match(options.config.systemInstruction, new RegExp('Website version ' + version));
     assert.deepEqual(options.contents.map(item => item.role), ['user', 'model', 'user']);
     assert.ok(!JSON.stringify(options.contents).includes('private diagnostic'));

@@ -2,6 +2,7 @@ import { GoogleGenAI } from '@google/genai';
 import { validationResult } from 'express-validator';
 import AppError from '../utils/AppError.js';
 import { buildWebsiteKnowledge } from '../services/chatKnowledge.js';
+import { getQuickReply } from '../services/chatQuickReply.js';
 
 const normaliseHistory = value => Array.isArray(value) ? value.filter(item => item && ['user', 'assistant'].includes(item.role) && !item.isError && typeof item.content === 'string').slice(-6).map(item => ({ role: item.role, content: item.content.trim().slice(0, 1200) })).filter(item => item.content) : [];
 const geminiFailure = error => {
@@ -14,10 +15,12 @@ const geminiFailure = error => {
   return new AppError('The assistant is temporarily unavailable. Please try again shortly.', 502);
 };
 
-export function createChatHandler({ loadKnowledge = buildWebsiteKnowledge, createClient = options => new GoogleGenAI(options) } = {}) {
+export function createChatHandler({ quickReply = getQuickReply, loadKnowledge = buildWebsiteKnowledge, createClient = options => new GoogleGenAI(options) } = {}) {
   return async function sendChatMessage(req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) throw new AppError(errors.array()[0].msg, 422);
+    const directReply = await quickReply(req.body.message);
+    if (directReply) return res.json({ success: true, data: { reply: directReply } });
     if (!process.env.GEMINI_API_KEY) throw new AppError('The assistant is temporarily unavailable. Please use our Contact page to reach the team.', 503);
     const knowledge = await loadKnowledge();
     const client = createClient({ apiKey: process.env.GEMINI_API_KEY });
