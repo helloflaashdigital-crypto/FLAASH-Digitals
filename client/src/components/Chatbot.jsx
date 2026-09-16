@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Bot, BotMessageSquare, LoaderCircle, Send, Sparkles, X } from 'lucide-react';
 import { api } from '../services/api';
+import ChatReply from './ChatReply';
 import { sendChatMessage, chatErrorMessage } from '../services/chat';
 
 const greeting = { role: 'assistant', content: 'Hi — I’m the FLAASH assistant. Ask me about our services, work, results, or starting a project.' };
@@ -32,7 +33,7 @@ export default function Chatbot() {
   return <div className={`website-chat${open ? ' is-open' : ''}`}>
     <AnimatePresence>{open && <motion.section className="website-chat__panel" aria-label="FLAASH website assistant" role="dialog" aria-modal="false" initial={reduceMotion ? false : { opacity: 0, y: 18, scale: .96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 12, scale: .98 }} transition={{ duration: .28, ease: [.22, 1, .36, 1] }}>
       <header><span className="website-chat__avatar"><Bot size={19}/></span><div><strong>Ask FLAASH</strong><small><i/>Website assistant</small></div><button type="button" onClick={() => setOpen(false)} aria-label="Close assistant"><X size={19}/></button></header>
-      <div className="website-chat__messages" ref={scrollRef} aria-live="polite">{messages.map((item, index) => <div className={`website-chat__message website-chat__message--${item.role}${item.isError ? ' is-error' : ''}`} key={`${item.role}-${index}`}><span>{item.role === 'assistant' ? <Bot size={15}/> : 'You'}</span><p>{item.content}</p></div>)}{sending && <div className="website-chat__typing" aria-label="Assistant is typing"><i/><i/><i/></div>}</div>
+      <div className="website-chat__messages" ref={scrollRef} aria-live="polite">{messages.map((item, index) => <div className={`website-chat__message website-chat__message--${item.role}${item.isError ? ' is-error' : ''}`} key={`${item.role}-${index}`}><span>{item.role === 'assistant' ? <Bot size={15}/> : 'You'}</span><div className="website-chat__bubble">{item.role === 'assistant' ? <ChatReply content={item.content}/> : <p>{item.content}</p>}</div></div>)}{sending && <div className="website-chat__typing" aria-label="Assistant is typing"><i/><i/><i/></div>}</div>
       {messages.length === 1 && <div className="website-chat__suggestions">{suggestions.map(item => <button type="button" key={item} onClick={() => send(item)}>{item}</button>)}</div>}
       <form onSubmit={event => { event.preventDefault(); send(draft); }}><label className="sr-only" htmlFor="flaash-chat-message">Ask a question</label><textarea id="flaash-chat-message" rows="1" value={draft} onChange={event => setDraft(event.target.value)} onKeyDown={event => { if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); send(draft); } }} placeholder="Ask about FLAASH…" maxLength="1200" disabled={sending}/><button type="submit" disabled={!draft.trim() || sending} aria-label="Send message">{sending ? <LoaderCircle size={18}/> : <Send size={18}/>}</button></form>
       <p className="website-chat__note"><Sparkles size={12}/> Answers use current FLAASH website content.</p>
