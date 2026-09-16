@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Bot, BotMessageSquare, LoaderCircle, Send, Sparkles, X } from 'lucide-react';
 import { api } from '../services/api';
+import { sendChatMessage, chatErrorMessage } from '../services/chat';
 
 const greeting = { role: 'assistant', content: 'Hi — I’m the FLAASH assistant. Ask me about our services, work, results, or starting a project.' };
 const suggestions = ['Which services can help my business?', 'Show me your recent work', 'How can I start a project?'];
@@ -18,14 +19,14 @@ export default function Chatbot() {
   const send = async value => {
     const message = value.trim();
     if (!message || sending) return;
-    const history = messages.slice(-6);
+    const history = messages.slice(1);
     setMessages(current => [...current, { role: 'user', content: message }]);
     setDraft(''); setSending(true);
     try {
-      const response = await api.post('/chat', { message, history });
-      setMessages(current => [...current, { role: 'assistant', content: response.data.data.reply }]);
+      const reply = await sendChatMessage(api, message, history);
+      setMessages(current => [...current, { role: 'assistant', content: reply }]);
     } catch (error) {
-      setMessages(current => [...current, { role: 'assistant', isError: true, content: error.response?.data?.message || 'I’m having trouble connecting right now. Please try again shortly.' }]);
+      setMessages(current => [...current, { role: 'assistant', isError: true, content: chatErrorMessage(error) }]);
     } finally { setSending(false); }
   };
   return <div className={`website-chat${open ? ' is-open' : ''}`}>
